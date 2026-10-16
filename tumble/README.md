@@ -37,8 +37,12 @@ If Git says local edits would be overwritten, save those edits before updating.
 |---|---|
 | `characters/Fern/` | Green scout: Walk, Jump, Hurt, Punch, Push, Knockout, Block and DoubleJump |
 | `characters/Ember/` | Amber scout: Walk, Jump, Hurt, Punch, Push, Knockout, Block and DoubleJump |
+| `vfx/Fern/` and `vfx/Ember/` | Eight green and eight amber effect frames, each 256x256 |
 | `arena/` | Three plank designs and three balancing spheres |
 | `backgrounds/` | Forest, Moonlit Lake and Ember Grove backgrounds |
 
 The character pack contains 160 individual transparent 256x256 PNG frames, ten per action for each character. This includes 40 new Block and DoubleJump frames. Every frame decodes successfully, and the new frames leave at least four transparent pixels at each canvas edge. This folder contains artwork only, with no game scripts or Unity import settings.
+
+
+The effect pack adds 16 individual transparent 256x256 PNGs, eight per element. Together with the 160 character frames, there are 176 character and VFX frames. The three backgrounds and six arena images are unchanged.
 
