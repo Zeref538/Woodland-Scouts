@@ -26,3 +26,7 @@ Frames were cut around detected artwork boundaries rather than an assumed grid. 
 All 60 PNGs decode successfully. Every animation contains 10 distinct frames. All canvases are 256x256, outer edges are fully transparent, visible artwork stays inside the canvas, and measured ball bounds share the same horizontal center within two pixels. These are artwork checks, not an in-game animation test.
 
 `previews/` contains six animated WebP previews and the sample overview. `sources/` preserves the six new sheets and both original sheets. The combined Git history includes the original boy and girl repositories.
+
+## Woodland Tumble
+
+See the [Woodland Tumble artwork guide](tumble/README.md) for the newer game's character frames, arena artwork, and clone/update commands.
