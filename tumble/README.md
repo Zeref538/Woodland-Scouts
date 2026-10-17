@@ -12,7 +12,7 @@ cd Woodland-Scouts
 git sparse-checkout set tumble/characters tumble/arena tumble/backgrounds tumble/menu tumble/ui tumble/vfx tumble/manifests
 ```
 
-The selected PNG files total approximately 40 MB. Git also downloads repository information, so the network download size can differ.
+The selected PNG files total approximately 55 MB. Git also downloads repository information, so the network download size can differ.
 
 For the entire artwork repository, including original sheets and earlier projects:
 
@@ -43,16 +43,16 @@ Save local edits before updating if Git reports that those files would be overwr
 
 | Character | Design | PNG frames | Actions |
 |---|---|---:|---|
-| Fern | Black-haired leaf scout | 100 | Walk, Jump, Hurt, Punch, Push, Knockout, Block, DoubleJump, Kick, Special |
-| Ember | Auburn-haired fire scout | 100 | Walk, Jump, Hurt, Punch, Push, Knockout, Block, DoubleJump, Kick, Special |
-| Luna | White-haired moon mage | 80 | Walk, Jump, Hurt, Knockout, Punch, Kick, Block, Special |
-| Bram | Stone-gauntlet woodland fighter | 80 | Walk, Jump, Hurt, Knockout, Punch, Kick, Block, Special |
+| Fern | Black-haired leaf scout | 140 | Walk, Jump, Hurt, Punch, Push, Knockout, Block, DoubleJump, Kick, Special, Dash, Backstep, Victory, Ultimate |
+| Ember | Auburn-haired fire scout | 140 | Walk, Jump, Hurt, Punch, Push, Knockout, Block, DoubleJump, Kick, Special, Dash, Backstep, Victory, Ultimate |
+| Luna | White-haired moon mage | 120 | Walk, Jump, Hurt, Knockout, Punch, Kick, Block, Special, Dash, Backstep, Victory, Ultimate |
+| Bram | Stone-gauntlet woodland fighter | 120 | Walk, Jump, Hurt, Knockout, Punch, Kick, Block, Special, Dash, Backstep, Victory, Ultimate |
 
-There are **360 individual character PNGs**, with ten frames per action folder. Each character has their own artwork. Luna and Bram's game animations use their own Jump poses for double jumping and their own Punch poses for the older Push compatibility state; those do not add extra PNG files.
+There are **520 individual character PNGs**, with ten frames per action folder. Each character has their own artwork. Luna and Bram's game animations use their own Jump poses for double jumping and their own Punch poses for the older Push compatibility state; those do not add extra PNG files.
 
-Frames face right and run in filename order, `01.png` through `10.png`. Ordinary frames are 256x256. Each character's Special frames are **384x256** so vines, fire, moon magic and stone effects fit without shrinking the body.
+Frames face right and run in filename order, `01.png` through `10.png`. Ordinary frames are 256x256. Special, Dash, Backstep, Victory and Ultimate frames are **384x256** so effects fit without shrinking the body.
 
-Use a bottom-center foot pivot: `(128,24)` pixels on ordinary frames and `(192,24)` on Special frames. These coordinates count upward from the bottom. In Unity this is a custom normalized pivot of `(0.5,0.09375)` for both canvas widths. Scale uniformly; do not stretch width and height separately.
+Use a bottom-center foot pivot: `(128,24)` pixels on ordinary frames and `(192,24)` on wide frames. These coordinates count upward from the bottom. In Unity this is a custom normalized pivot of `(0.5,0.09375)` for both canvas widths. Scale uniformly; do not stretch width and height separately.
 
 ## Other artwork
 
@@ -62,15 +62,15 @@ Use a bottom-center foot pivot: `(128,24)` pixels on ordinary frames and `(192,2
 | `backgrounds/` | Forest, Moonlit Lake, Ember Grove, Skyward Ruins, and the older shared Scouts reference atlas |
 | `menu/` | Illustrated title backdrop and world atlas |
 | `ui/` | Scout plate, header shade, interface surfaces, and native controller circles/shapes |
-| `vfx/` | Eight Fern and eight Ember slash frames |
-| `sources/` | Twenty-five original source sheets, preserved without image changes |
+| `vfx/` | Sixteen earlier slash frames plus 48 new character-specific combo effect frames |
+| `sources/` | Forty-six original source sheets, preserved without image changes |
 | `manifests/` | Frame counts, source rectangles, dimensions and image hashes |
 
-The complete `tumble/` artwork contains **451 PNGs**, including the original source sheets. It contains no game scripts, Unity project files or import settings.
+The complete `tumble/` artwork contains **692 PNGs**, including the original source sheets. It contains no game scripts, Unity project files or import settings.
 
 ## Checks
 
-All 451 PNGs decode successfully. The character manifest lists all 360 frames with their dimensions, visible bounds and SHA-256 image hashes.
+All 692 PNGs decode successfully. The character manifest lists the previous 360 frames with their dimensions, visible bounds and SHA-256 image hashes.
 
 The new roster pass adds 200 frames across twenty action folders. Each folder contains ten distinct images. All 200 have at least four transparent pixels around their visible artwork. Transparent row gutters and connected silhouettes were used for slicing because the generated sheets do not have perfectly even cells.
 
@@ -79,3 +79,13 @@ The new roster pass adds 200 frames across twenty action folders. Each folder co
 The compact HUD update adds four pixel-art action covers and a VS emblem. Actions show their controller symbol or keyboard key as a small overlay; the native diamond connector is also included. Original sheets and extraction hashes are recorded in `manifests/HUD-ART-v6.1.json`.
 
 Each scout now has four separate action covers under `ui/Actions/{Fern,Ember,Luna,Bram}/`. Fern uses roots and leaves, Ember flames, Luna moonlight and frost, and Bram stone gauntlets and ground fissures. All sixteen images have different decoded image hashes. The root-level four action icons remain legacy assets; the game uses the character folders.
+
+## v7 action artwork
+
+Four new actions per character add 160 distinct frames: Dash, Backstep, Victory and Ultimate. They use transparent 384x256 canvases with a bottom foot pivot 24 pixels above the lower edge. A single scale per source keeps body size consistent without stretching effects. All 160 decode and every action has ten distinct images with at least four transparent pixels around the artwork. Luna Ultimate was regenerated to replace a merged pose and an effect-only tile; its neutral body is approximately 197 pixels tall, compared with the nominal 200-pixel body calibration.
+
+`manifests/ROSTER-ART-v7.json` records the new frames and source hashes. Original action sheets remain under `sources/v7/`.
+
+The v7 arena update adds eight dedicated PVP sprites under `arena/PVP/{Forest,Moonlit,Ember,Skyward}/`: a Base and Ledge for each theme. Their opaque top profile is aligned near local Y +0.04 when displayed at widths 14 and 4.2 respectively, using uniform scaling. Four new Jump action covers are under `ui/Actions/{Fern,Ember,Luna,Bram}/Jump.png`. Platform and cover source sheets and hashes are listed in `manifests/ARENA-ACTION-ART-v7.json`.
+
+The 48 combo-effect frames live under `vfx/combo/{character}/{Hit,Finisher}/`, six frames per sequence. Each transparent PNG is 256x256 and uses a 64-pixel design grid for crisp pixels. These effects use a centered pivot, unlike the characters' foot pivot. `manifests/COMBO-ART-v7.json` records output hashes. The runtime selection contains 646 PNGs totaling 54,726,439 bytes; the larger original sheets are optional.
