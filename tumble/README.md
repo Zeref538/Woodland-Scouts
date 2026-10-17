@@ -1,6 +1,6 @@
-# Wildwood Rivals artwork
+# Tilt Rivals artwork
 
-Artwork for [Wildwood Rivals](https://github.com/Zeref538/woodland-tumble), kept in this separate repository so the lab can download images without the Unity project. The game repository keeps its existing `woodland-tumble` address.
+Artwork for [Tilt Rivals](https://github.com/Zeref538/woodland-tumble), kept in this separate repository so the lab can download images without the Unity project. The game repository keeps its existing `woodland-tumble` address.
 
 ## Download on slow lab Wi-Fi
 
@@ -12,7 +12,7 @@ cd Woodland-Scouts
 git sparse-checkout set tumble/characters tumble/arena tumble/backgrounds tumble/menu tumble/ui tumble/vfx tumble/manifests
 ```
 
-The selected PNG files total approximately 39 MB. Git also downloads repository information, so the network download size can differ.
+The selected PNG files total approximately 40 MB. Git also downloads repository information, so the network download size can differ.
 
 For the entire artwork repository, including original sheets and earlier projects:
 
@@ -63,15 +63,17 @@ Use a bottom-center foot pivot: `(128,24)` pixels on ordinary frames and `(192,2
 | `menu/` | Illustrated title backdrop and world atlas |
 | `ui/` | Scout plate, header shade, interface surfaces, and native controller circles/shapes |
 | `vfx/` | Eight Fern and eight Ember slash frames |
-| `sources/` | Nineteen original source sheets, preserved without image changes |
+| `sources/` | Twenty-one original source sheets, preserved without image changes |
 | `manifests/` | Frame counts, source rectangles, dimensions and image hashes |
 
-The complete `tumble/` artwork contains **423 PNGs**, including the original source sheets. It contains no game scripts, Unity project files or import settings.
+The complete `tumble/` artwork contains **431 PNGs**, including the original source sheets. It contains no game scripts, Unity project files or import settings.
 
 ## Checks
 
-All 423 PNGs decode successfully. The character manifest lists all 360 frames with their dimensions, visible bounds and SHA-256 image hashes.
+All 431 PNGs decode successfully. The character manifest lists all 360 frames with their dimensions, visible bounds and SHA-256 image hashes.
 
 The new roster pass adds 200 frames across twenty action folders. Each folder contains ten distinct images. All 200 have at least four transparent pixels around their visible artwork. Transparent row gutters and connected silhouettes were used for slicing because the generated sheets do not have perfectly even cells.
 
 `manifests/ROSTER-ART-v6.json` records each new frame's source rectangle, alignment, scale and source-sheet hash. Two Bram knockout poses and one unused anticipation pose come from a second original Bram sheet; the manifest identifies those sources. These are asset checks, not a claim that a separate artwork download is a running game.
+
+The compact HUD update adds four pixel-art action covers and a VS emblem. Actions show their controller symbol or keyboard key as a small overlay; the native diamond connector is also included. Original sheets and extraction hashes are recorded in `manifests/HUD-ART-v6.1.json`.

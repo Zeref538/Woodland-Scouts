@@ -27,6 +27,6 @@ All 60 PNGs decode successfully. Every animation contains 10 distinct frames. Al
 
 `previews/` contains six animated WebP previews and the sample overview. `sources/` preserves the six new sheets and both original sheets. The combined Git history includes the original boy and girl repositories.
 
-## Wildwood Rivals
+## Tilt Rivals
 
-See the [Wildwood Rivals artwork guide](tumble/README.md) for the newer game's character frames, arena artwork, and clone/update commands.
+See the [Tilt Rivals artwork guide](tumble/README.md) for the newer game's character frames, arena artwork, and clone/update commands.
